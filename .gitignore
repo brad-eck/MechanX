@@ -7,3 +7,6 @@ venv/
 ENV/
 env/
 .venv/
+
+#Specific Files
+documentation.txt
