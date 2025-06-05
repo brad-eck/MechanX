@@ -10,3 +10,6 @@ env/
 
 #Specific Files
 documentation.txt
+
+#Python Stuff
+__pycache__/
