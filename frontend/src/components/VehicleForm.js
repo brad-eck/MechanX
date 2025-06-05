@@ -11,7 +11,7 @@ const VehicleForm = ({ userId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/vehicles/`, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/vehicles/`, {
         year: parseInt(year),
         make,
         model,
@@ -19,10 +19,10 @@ const VehicleForm = ({ userId }) => {
         condition,
         user_id: userId,
       });
-      alert('Vehicle added!');
+      alert(`Vehicle added! ID: ${response.data.id}`);
     } catch (error) {
-      console.error(error);
-      alert('Error adding vehicle');
+      console.error('Error adding vehicle:', error.response?.data || error.message);
+      alert(`Error adding vehicle: ${error.response?.data?.detail || error.message}`);
     }
   };
 

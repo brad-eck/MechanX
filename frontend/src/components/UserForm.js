@@ -8,11 +8,11 @@ const UserForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/users/`, { email, full_name: fullName });
-      alert('User created!');
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/users/`, { email, full_name: fullName });
+      alert(`User created! ID: ${response.data.id}`);
     } catch (error) {
-      console.error(error);
-      alert('Error creating user');
+      console.error('Error creating user:', error.response?.data || error.message);
+      alert(`Error creating user: ${error.response?.data?.detail || error.message}`);
     }
   };
 
